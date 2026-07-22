@@ -8,6 +8,8 @@
 body {
     background:linear-gradient(135deg,#071422,#0a2540,#0d1b2a);
     min-height: 100vh;
+padding: 30px 15px;
+box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,15 +85,15 @@ hr {
     transform: scale(1.05);
 }
 
-@media (max-width:600px){
+@media (max-width:768px){
 
-    .card{
-        padding:30px 20px;
-    }
+h1{
+    font-size:2.4rem;
+}
 
-    h1{
-        font-size:1.8rem;
-    }
+h2{
+    font-size:1.8rem;
+}
 
 }
 pre{
@@ -180,10 +182,8 @@ box-shadow:0 0 30px #00d9ff;
 
 }
 .container{
-
-max-width:850px;
-
-margin:40px auto;
+width: min(92%, 850px);
+margin: auto;
 
 padding:40px;
 
