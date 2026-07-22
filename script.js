@@ -184,5 +184,43 @@ ${Array.from({length:9},(_,i)=>`
 </div>
 
 `;
+startMemoryRound();
+
+}
+function startMemoryRound(){
+
+const cells=document.querySelectorAll(".cell");
+
+// Clear everything
+cells.forEach(cell=>{
+cell.classList.remove("active");
+});
+
+// Randomly choose 3 cells
+let pattern=[];
+
+while(pattern.length<3){
+
+let random=Math.floor(Math.random()*9);
+
+if(!pattern.includes(random)){
+pattern.push(random);
+}
+
+}
+
+// Highlight them
+pattern.forEach(index=>{
+cells[index].classList.add("active");
+});
+
+// Hide after 2 seconds
+setTimeout(()=>{
+
+cells.forEach(cell=>{
+cell.classList.remove("active");
+});
+
+},2000);
 
 }
