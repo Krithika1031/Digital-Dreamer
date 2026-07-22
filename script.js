@@ -1,3 +1,4 @@
+let currentPattern = 1;
 let correctPattern = [];
 let userPattern = [];
 let currentRound = 1;
@@ -223,7 +224,7 @@ cell.classList.remove("active");
 });
 enableCellClicks();
 
-},500);
+},300);
 
 }
 function enableCellClicks() {
@@ -283,7 +284,7 @@ function(){
     currentRound = 1;
     currentPattern = 1;
 
-    showMission1Task1();
+    location.reload();
 
 }
 );
@@ -314,9 +315,10 @@ function updateLives() {
 }
 function checkRound() {
 
+    console.log("Correct pattern completed!");
+
     const cells = document.querySelectorAll(".cell");
 
-    // Disable clicking
     cells.forEach(cell => cell.onclick = null);
 
     currentPattern++;
