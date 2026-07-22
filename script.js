@@ -120,16 +120,19 @@ wrong.push("Question 2");
 
 if(wrong.length===0){
 
-document.querySelector(".container").innerHTML=`
-<div class="success-screen">
+showPopup(
 
-<h1>✅ TASK 1 COMPLETED!</h1>
+"✅ TASK 1 COMPLETED",
 
-<h2>You have unlocked the first digital lock.</h2>
+"Loading Task 2...",
 
-<button>Proceed to Task 2</button> </div>
+()=>{
 
-`;
+showMission1Task2();
+
+}
+
+);
 
 }else{
 
@@ -142,5 +145,44 @@ showPopup(
 );
 
 }
+
+}
+function showMission1Task2(){
+
+document.querySelector(".container").innerHTML=`
+
+<div class="memory-container">
+
+<h3>MISSION 1</h3>
+
+<h1>🧠 MEMORY MATRIX</h1>
+
+<p class="memory-subtitle">
+Memorize the highlighted pattern.
+</p>
+
+<div class="lives">
+
+❤️ ❤️ ❤️
+
+</div>
+
+<div class="round">
+
+Round 1 / 5
+
+</div>
+
+<div class="grid">
+
+${Array.from({length:9},(_,i)=>`
+<div class="cell" data-index="${i}"></div>
+`).join("")}
+
+</div>
+
+</div>
+
+`;
 
 }
