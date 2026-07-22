@@ -531,3 +531,7 @@ background:#00d9ff;
 box-shadow:0 0 25px #00d9ff;
 
 }
+.wrong{
+    background:#ff4d4d;
+    border-color:#ff4d4d;
+}

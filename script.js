@@ -165,10 +165,8 @@ document.querySelector(".container").innerHTML=`
 Memorize the highlighted pattern.
 </p>
 
-<div class="lives">
-
-❤️ ❤️ ❤️
-
+<div class="lives" id="lives">
+❤️❤️❤️
 </div>
 
 <div class="round">
@@ -192,6 +190,7 @@ startMemoryRound();
 
 }
 function startMemoryRound(){
+    updateLives();
 
 const cells=document.querySelectorAll(".cell");
 
@@ -227,34 +226,84 @@ enableCellClicks();
 },1500);
 
 }
-function enableCellClicks(){
+function enableCellClicks() {
 
-userPattern=[];
+    userPattern = [];
 
-const cells=document.querySelectorAll(".cell");
+    const cells = document.querySelectorAll(".cell");
 
-cells.forEach(cell=>{
+    cells.forEach(cell => {
 
-cell.onclick=()=>{
+        cell.onclick = () => {
 
-const index=parseInt(cell.dataset.index);
+            const index = parseInt(cell.dataset.index);
 
-if(userPattern.includes(index))
-return;
+            // Don't allow clicking same cell twice
+            if (userPattern.includes(index)) return;
 
-userPattern.push(index);
+            // If correct cell
+            if (correctPattern.includes(index)) {
 
-cell.classList.add("active");
+                userPattern.push(index);
+                cell.classList.add("active");
 
-if(userPattern.length===correctPattern.length){
+                // Player found all correct cells
+                if (userPattern.length === correctPattern.length) {
 
-checkRound();
+                    setTimeout(() => {
+                        checkRound();
+                    }, 500);
+
+                }
+
+            }
+
+            // Wrong cell selected
+            else {
+
+                cell.classList.add("wrong");
+
+                lives--;
+
+                updateLives();
+
+                // Disable further clicks
+                cells.forEach(c => c.onclick = null);
+
+                setTimeout(() => {
+
+                    if (lives === 0) {
+
+                        showPopup(
+                            "🚨 SECURITY BREACH",
+                            "Restarting Mission 1...",
+                            () => {
+                                showMission1Task1();
+                            }
+                        );
+
+                    } else {
+
+                        startMemoryRound();
+
+                    }
+
+                }, 800);
+
+            }
+
+        };
+
+    });
 
 }
+function updateLives() {
 
-};
+    const hearts = document.getElementById("lives");
 
-});
+    hearts.innerHTML =
+        "❤️".repeat(lives) +
+        "🤍".repeat(3 - lives);
 
 }
 function checkRound(){
