@@ -74,7 +74,26 @@ C = 67 = 01000011   and so on...
 document.getElementById("submitTask").addEventListener("click", validateTask);
 
 });
+const popup = document.getElementById("popup");
+const popupTitle = document.getElementById("popupTitle");
+const popupMessage = document.getElementById("popupMessage");
+const popupBtn = document.getElementById("popupBtn");
 
+function showPopup(title, message, callback = null) {
+
+    popupTitle.innerHTML = title;
+    popupMessage.innerHTML = message;
+
+    popup.classList.remove("hidden");
+
+    popupBtn.onclick = () => {
+        popup.classList.add("hidden");
+
+        if (callback) {
+            callback();
+        }
+    };
+}
 function validateTask(){
 
 const q1=document.querySelector('input[name="q1"]:checked');
@@ -82,7 +101,10 @@ const q2=document.querySelector('input[name="q2"]:checked');
 
 if(!q1 || !q2){
 
-alert("Please answer both questions.");
+showPopup(
+    "⚠️ Incomplete",
+    "Please answer both questions."
+);
 
 return;
 
@@ -113,9 +135,13 @@ document.querySelector(".container").innerHTML=`
 
 }else{
 
-alert("❌ "+wrong.join(" & ")+" is incorrect.\n\nRestarting Task 1.");
-
-location.reload();
+howPopup(
+    "❌ ACCESS DENIED",
+    wrong.join(" & ") + " is incorrect.<br><br>Please try again.",
+    () => {
+        location.reload();
+    }
+);
 
 }
 
