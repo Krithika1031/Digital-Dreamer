@@ -135,7 +135,7 @@ document.querySelector(".container").innerHTML=`
 
 }else{
 
-howPopup(
+showPopup(
     "❌ ACCESS DENIED",
     wrong.join(" & ") + " is incorrect.<br><br>Please try again.",
     () => {
