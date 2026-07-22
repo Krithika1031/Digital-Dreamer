@@ -223,7 +223,7 @@ cell.classList.remove("active");
 });
 enableCellClicks();
 
-},1500);
+},500);
 
 }
 function enableCellClicks() {
@@ -275,12 +275,18 @@ function enableCellClicks() {
                     if (lives === 0) {
 
                         showPopup(
-                            "🚨 SECURITY BREACH",
-                            "Restarting Mission 1...",
-                            () => {
-                                showMission1Task1();
-                            }
-                        );
+"🚨 SECURITY BREACH",
+"Restarting Mission 1...",
+function(){
+
+    lives = 3;
+    currentRound = 1;
+    currentPattern = 1;
+
+    showMission1Task1();
+
+}
+);
 
                     } else {
 
@@ -306,10 +312,19 @@ function updateLives() {
         "🤍".repeat(3 - lives);
 
 }
-function checkRound(){
+function checkRound() {
 
-console.log("Correct Pattern:",correctPattern);
+    const cells = document.querySelectorAll(".cell");
 
-console.log("User Pattern:",userPattern);
+    // Disable clicking
+    cells.forEach(cell => cell.onclick = null);
+
+    currentPattern++;
+
+    setTimeout(() => {
+
+        startMemoryRound();
+
+    }, 500);
 
 }
