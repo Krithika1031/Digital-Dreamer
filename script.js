@@ -1,3 +1,7 @@
+let correctPattern = [];
+let userPattern = [];
+let currentRound = 1;
+let lives = 3;
 const popup = document.getElementById("popup");
 const popupTitle = document.getElementById("popupTitle");
 const popupMessage = document.getElementById("popupMessage");
@@ -197,20 +201,18 @@ cell.classList.remove("active");
 });
 
 // Randomly choose 3 cells
-let pattern=[];
-
-while(pattern.length<3){
-
+correctPattern = [];
+while(correctPattern.length < 3){
 let random=Math.floor(Math.random()*9);
 
-if(!pattern.includes(random)){
-pattern.push(random);
+if(!correctPattern.includes(random)){
+correctPattern.push(random);
 }
 
 }
 
 // Highlight them
-pattern.forEach(index=>{
+correctPattern.forEach(index=>{
 cells[index].classList.add("active");
 });
 
@@ -220,7 +222,45 @@ setTimeout(()=>{
 cells.forEach(cell=>{
 cell.classList.remove("active");
 });
+enableCellClicks();
 
-},2000);
+},1500);
+
+}
+function enableCellClicks(){
+
+userPattern=[];
+
+const cells=document.querySelectorAll(".cell");
+
+cells.forEach(cell=>{
+
+cell.onclick=()=>{
+
+const index=parseInt(cell.dataset.index);
+
+if(userPattern.includes(index))
+return;
+
+userPattern.push(index);
+
+cell.classList.add("active");
+
+if(userPattern.length===correctPattern.length){
+
+checkRound();
+
+}
+
+};
+
+});
+
+}
+function checkRound(){
+
+console.log("Correct Pattern:",correctPattern);
+
+console.log("User Pattern:",userPattern);
 
 }
