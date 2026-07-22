@@ -261,3 +261,31 @@ line-height:1.8;
     flex-direction: column;
     justify-content: center;
 }
+.success-screen{
+    min-height:100dvh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:25px;
+}
+
+.success-screen h1{
+    color:white;
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.success-screen p{
+    color:#fff;
+    font-size:1.4rem;
+    margin-bottom:40px;
+}
+
+.success-screen button{
+    width:260px;
+}
+.success-screen p{
+    color:white;
+}

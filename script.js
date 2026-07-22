@@ -101,12 +101,13 @@ wrong.push("Question 2");
 if(wrong.length===0){
 
 document.querySelector(".container").innerHTML=`
+<div class="success-screen">
 
 <h1>✅ TASK 1 COMPLETED!</h1>
 
 <h2>You have unlocked the first digital lock.</h2>
 
-<button>Proceed to Task 2</button>
+<button>Proceed to Task 2</button> </div>
 
 `;
 
