@@ -387,12 +387,12 @@ function checkRound() {
         if (currentRound > 5) {
 
             showPopup(
-                "🎉 TASK 2 COMPLETED",
-                "Loading Task 3...",
-                () => {
-                    // showMission1Task3();
-                }
-            );
+    "🎉 TASK 2 COMPLETED",
+    "Loading Task 3...",
+    () => {
+        showMission1Task3();
+    }
+);
 
             return;
         }
@@ -401,5 +401,68 @@ function checkRound() {
     setTimeout(() => {
         startMemoryRound();
     }, 600);
+
+}
+function showMission1Task3(){
+
+document.querySelector(".container").innerHTML = `
+
+<div class="spot-screen">
+
+<h3>MISSION 1</h3>
+
+<h1>👁 TASK 3</h1>
+
+<p class="spot-subtitle">
+Find the 3 Differences
+</p>
+
+<div class="spot-top">
+
+<div id="spotTimer">
+⏱ 45
+</div>
+
+<div id="spotLives">
+❤️❤️❤️
+</div>
+
+</div>
+
+<p class="foundText">
+
+Found
+
+<span id="foundCount">
+0
+</span>
+
+/3
+
+</p>
+
+<div class="spot-images">
+
+<div class="spot-image">
+
+<img
+src="images/left.png"
+>
+
+</div>
+
+<div class="spot-image">
+
+<img
+src="images/right.png"
+>
+
+</div>
+
+</div>
+
+</div>
+
+`;
 
 }
