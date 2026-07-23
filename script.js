@@ -438,25 +438,33 @@ let timeLeft = 3;
 let task3lives  = 3;
 function showMission1Task3(){
 
-document.querySelector(".container").innerHTML=`
+document.querySelector(".container").innerHTML = `
 
 <div id="task3">
 
-<h2>🧠 TASK 3</h2>
+    <div class="taskCard">
 
-<div class="task-header">
+        <h2>🧠 TASK 3</h2>
 
-<div id="questionNo"></div>
+        <div class="task-header">
 
-<div id="taskTimer"></div>
+            <div id="questionNo"></div>
 
-<div id="taskLives">❤️❤️❤️</div>
+            <div id="taskTimer"></div>
 
-</div>
+            <div id="taskLives">❤️❤️❤️</div>
 
-<div id="patternQuestion"></div>
+        </div>
 
-<div id="optionsContainer"></div>
+        <div class="questionCard">
+
+            <div id="patternQuestion"></div>
+
+        </div>
+
+        <div id="optionsContainer"></div>
+
+    </div>
 
 </div>
 
