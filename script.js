@@ -1,3 +1,6 @@
+let timerInterval;
+const patternsPerRound = [3, 3, 2, 1, 1];
+const boxesPerRound = [4, 5, 6, 7, 8];
 let currentPattern = 1;
 let correctPattern = [];
 let userPattern = [];
@@ -165,15 +168,15 @@ document.querySelector(".container").innerHTML=`
 <p class="memory-subtitle">
 Memorize the highlighted pattern.
 </p>
-
+<div class="timer" id="timer">
+⏳ 3
+</div>
 <div class="lives" id="lives">
 ❤️❤️❤️
 </div>
 
-<div class="round">
-
+<div class="round" id="roundText">
 Round 1 / 5
-
 </div>
 
 <div class="grid">
@@ -192,6 +195,8 @@ startMemoryRound();
 }
 function startMemoryRound(){
     updateLives();
+    document.getElementById("roundText").innerText =
+    `Round ${currentRound} / 5`;
 
 const cells=document.querySelectorAll(".cell");
 
@@ -202,7 +207,7 @@ cell.classList.remove("active");
 
 // Randomly choose 3 cells
 correctPattern = [];
-while(correctPattern.length < 3){
+while (correctPattern.length < boxesPerRound[currentRound - 1]) {
 let random=Math.floor(Math.random()*9);
 
 if(!correctPattern.includes(random)){
@@ -223,6 +228,7 @@ cells.forEach(cell=>{
 cell.classList.remove("active");
 });
 enableCellClicks();
+startTimer();
 
 },300);
 
@@ -263,7 +269,7 @@ function enableCellClicks() {
             else {
 
                 cell.classList.add("wrong");
-
+                clearInterval(timerInterval);
                 lives--;
 
                 updateLives();
@@ -313,20 +319,87 @@ function updateLives() {
         "🤍".repeat(3 - lives);
 
 }
-function checkRound() {
+function startTimer(){
 
-    console.log("Correct pattern completed!");
+    clearInterval(timerInterval);
+
+    let timeLeft = 3;
+
+    const timer = document.getElementById("timer");
+
+    timer.innerHTML = `⏳ ${timeLeft}`;
+
+    timerInterval = setInterval(()=>{
+
+        timeLeft--;
+
+        timer.innerHTML = `⏳ ${timeLeft}`;
+
+        if(timeLeft <= 0){
+
+            clearInterval(timerInterval);
+
+            lives--;
+
+            updateLives();
+
+            const cells = document.querySelectorAll(".cell");
+            cells.forEach(c => c.onclick = null);
+
+            setTimeout(()=>{
+
+                if(lives <= 0){
+
+                    showPopup(
+                        "🚨 SECURITY BREACH",
+                        "Restarting Mission...",
+                        ()=>{
+                            location.reload();
+                        }
+                    );
+
+                }else{
+
+                    startMemoryRound();
+
+                }
+
+            },500);
+
+        }
+
+    },1000);
+
+}
+function checkRound() {
+    clearInterval(timerInterval);
 
     const cells = document.querySelectorAll(".cell");
-
     cells.forEach(cell => cell.onclick = null);
 
     currentPattern++;
 
+    if (currentPattern > patternsPerRound[currentRound - 1]) {
+
+        currentRound++;
+        currentPattern = 1;
+
+        if (currentRound > 5) {
+
+            showPopup(
+                "🎉 TASK 2 COMPLETED",
+                "Loading Task 3...",
+                () => {
+                    // showMission1Task3();
+                }
+            );
+
+            return;
+        }
+    }
+
     setTimeout(() => {
-
         startMemoryRound();
-
-    }, 500);
+    }, 600);
 
 }
