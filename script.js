@@ -434,6 +434,7 @@ const patternQuestions = [
 let currentQuestion = 0;
 let questionTimer;
 let timeLeft = 3;
+let task3lives  = 3;
 function showMission1Task3(){
 
 document.getElementById("mainContainer").innerHTML=`
