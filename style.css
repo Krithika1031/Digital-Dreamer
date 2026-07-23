@@ -558,12 +558,11 @@ box-shadow:0 0 25px #00d9ff;
 }
 
 .task-header{
-    display:flex;
-    justify-content:space-between;
+    display:grid;
+    grid-template-columns:1fr auto auto;
     align-items:center;
+    gap:12px;
     margin-bottom:18px;
-    font-size:18px;
-    color:#fff;
 }
 
 #questionNo{
@@ -589,7 +588,7 @@ box-shadow:0 0 25px #00d9ff;
 }
 #optionsContainer{
 
-    margin-top:20px;
+    margin-top:10px;
 
     display:flex;
 
@@ -602,28 +601,15 @@ box-shadow:0 0 25px #00d9ff;
 }
 .optionBtn{
 
-    width:100%;
+padding:14px;
 
-    background:#151515;
+height:58px;
 
-    color:white;
+margin:10px 0;
 
-    border:2px solid #00e5ff;
-
-    border-radius:18px;
-
-    padding:14px;
-
-    font-size:20px;
-
-    font-weight:600;
-
-    transition:.25s;
-
-    box-shadow:0 0 10px rgba(0,229,255,.25);
+font-size:22px;
 
 }
-
 .optionBtn:hover{
 
     background:#00d9ff;
@@ -798,9 +784,15 @@ box-shadow:0 0 25px #00d9ff;
 }
 
 .questionCard{
-    background:#13293d;
-    border-radius:18px;
-    padding:20px;
-    margin:20px 0;
-    border:1px solid rgba(0,229,255,.2);
+
+padding:25px 20px;
+
+min-height:180px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
 }
