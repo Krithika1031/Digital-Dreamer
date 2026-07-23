@@ -403,3 +403,267 @@ function checkRound() {
     }, 600);
 
 }
+const patternQuestions = [
+    {
+        question: "1\n2\n4\n7\n11\n?",
+        options: ["13", "14", "16", "17"],
+        answer: "16"
+    },
+    {
+        question: "64\n32\n16\n8\n?",
+        options: ["2", "4", "6", "10"],
+        answer: "4"
+    },
+    {
+        question: "Which one doesn't belong?",
+        options: ["CPU", "RAM", "SSD", "Chrome"],
+        answer: "Chrome"
+    },
+    {
+        question: "0001\n0010\n0100\n1000\n?",
+        options: ["0001", "0011", "1111", "1010"],
+        answer: "0001"
+    },
+    {
+        question: "Product\nPrice\nPlace\n?",
+        options: ["Profit", "Promotion", "Planning", "People"],
+        answer: "Promotion"
+    }
+];
+
+let currentQuestion = 0;
+let questionTimer;
+let timeLeft = 3;
+let lives = 3;
+function showMission1Task3(){
+
+document.getElementById("mainContainer").innerHTML=`
+
+<div id="task3">
+
+<h2>🧠 TASK 3</h2>
+
+<div class="task-header">
+
+<div id="questionNo"></div>
+
+<div id="taskTimer"></div>
+
+<div id="taskLives">❤️❤️❤️</div>
+
+</div>
+
+<div id="patternQuestion"></div>
+
+<div id="optionsContainer"></div>
+
+</div>
+
+`;
+
+currentQuestion=0;
+lives=3;
+
+loadQuestion();
+
+}
+function loadQuestion(){
+
+timeLeft=3;
+
+const q=patternQuestions[currentQuestion];
+
+document.getElementById("questionNo").innerText=
+`Question ${currentQuestion+1} / 5`;
+
+document.getElementById("patternQuestion").innerText=q.question;
+
+const container=document.getElementById("optionsContainer");
+
+container.innerHTML="";
+
+q.options.forEach(option=>{
+
+const btn=document.createElement("button");
+
+btn.className="optionBtn";
+
+btn.innerText=option;
+
+btn.onclick=()=>checkAnswer(option);
+
+container.appendChild(btn);
+
+});
+
+startQuestionTimer();
+
+}
+function startQuestionTimer(){
+
+clearInterval(questionTimer);
+
+document.getElementById("taskTimer").innerText=
+"⏱ "+timeLeft;
+
+questionTimer=setInterval(()=>{
+
+timeLeft--;
+
+document.getElementById("taskTimer").innerText=
+"⏱ "+timeLeft;
+
+if(timeLeft<=0){
+
+clearInterval(questionTimer);
+
+loseLife();
+
+nextQuestion();
+
+}
+
+},1000);
+
+}
+function checkAnswer(selected){
+
+clearInterval(questionTimer);
+
+if(selected!==patternQuestions[currentQuestion].answer){
+
+loseLife();
+
+}
+
+nextQuestion();
+
+}
+function loseLife(){
+
+lives--;
+
+let hearts="";
+
+for(let i=0;i<lives;i++)
+hearts+="❤️";
+
+for(let i=lives;i<3;i++)
+hearts+="🤍";
+
+document.getElementById("taskLives").innerText=hearts;
+
+if(lives<=0){
+
+showPopup(
+"❌ MISSION FAILED",
+"Restarting Task 3...",
+()=>{
+restartTask3();
+});
+
+}
+
+}
+function nextQuestion(){
+
+currentQuestion++;
+
+if(currentQuestion>=5){
+
+missionComplete();
+
+return;
+
+}
+
+loadQuestion();
+
+}
+function restartTask3(){
+
+currentQuestion=0;
+
+lives=3;
+
+document.getElementById("taskLives").innerText="❤️❤️❤️";
+
+loadQuestion();
+
+}
+function missionComplete(){
+
+document.getElementById("mainContainer").innerHTML=`
+
+<div class="missionComplete">
+
+<h1>🎉 MISSION COMPLETE</h1>
+
+<p>
+Excellent Work, Agent!
+</p>
+
+<p>
+You successfully decoded the patterns
+and completed Mission 1.
+</p>
+
+<p>
+The system has unlocked your next clue.
+</p>
+
+<button class="nextArrow"
+onclick="showCluePage()">
+
+➜
+
+</button>
+
+</div>
+
+`;
+
+}
+function showCluePage(){
+
+document.getElementById("mainContainer").innerHTML=`
+
+<div class="cluePage">
+
+<h1>🔓 NEXT CLUE UNLOCKED</h1>
+
+<hr>
+
+<h2>📍 Your next destination is</h2>
+
+<div class="clueBox">
+
+_____________________
+
+</div>
+
+<p>
+(You'll fill this later.)
+</p>
+
+<hr>
+
+<h3>⚠ IMPORTANT</h3>
+
+<p>
+
+Show this screen to one of the volunteers before moving to your next destination.
+
+</p>
+
+<p>
+
+Good luck, Agent!
+
+</p>
+
+</div>
+
+`;
+
+}
