@@ -420,7 +420,7 @@ Find the 3 Differences
 <div class="spot-top">
 
 <div id="spotTimer">
-⏱ 45
+⏱ 15
 </div>
 
 <div id="spotLives">
@@ -443,26 +443,44 @@ Found
 
 <div class="spot-images">
 
-<div class="spot-image">
+    <!-- LEFT IMAGE -->
 
-<img
-src="images/left.png"
->
+    <div class="spot-image">
+
+        <img src="images/left.png">
+
+    </div>
+
+    <!-- RIGHT IMAGE -->
+
+    <div class="spot-image" id="rightContainer">
+
+        <img src="images/right.png">
+
+        <div class="difference diff1"></div>
+        <div class="difference diff2"></div>
+        <div class="difference diff3"></div>
+
+    </div>
 
 </div>
-
-<div class="spot-image">
-
-<img
-src="images/right.png"
->
-
-</div>
-
-</div>
-
-</div>
-
 `;
 
 }
+let found = 0;
+
+document.addEventListener("click",function(e){
+
+    if(e.target.classList.contains("difference")){
+
+        if(e.target.classList.contains("found")) return;
+
+        e.target.classList.add("found");
+
+        found++;
+
+        document.getElementById("foundCount").innerText=found;
+
+    }
+
+});
