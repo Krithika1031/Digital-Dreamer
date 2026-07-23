@@ -323,7 +323,7 @@ function startTimer(){
 
     clearInterval(timerInterval);
 
-    let timeLeft = 3;
+    let timeLeft = 2;
 
     const timer = document.getElementById("timer");
 
