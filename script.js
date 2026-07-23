@@ -438,7 +438,7 @@ let timeLeft = 3;
 let task3lives  = 3;
 function showMission1Task3(){
 
-document.getElementById("mainContainer").innerHTML=`
+document.querySelector(".container").innerHTML=`
 
 <div id="task3">
 
@@ -594,7 +594,7 @@ loadQuestion();
 }
 function missionComplete(){
 
-document.getElementById("mainContainer").innerHTML=`
+document.querySelector(".container").innerHTML=`
 
 <div class="missionComplete">
 
@@ -627,7 +627,7 @@ onclick="showCluePage()">
 }
 function showCluePage(){
 
-document.getElementById("mainContainer").innerHTML=`
+document.querySelector(".container").innerHTML=`
 
 <div class="cluePage">
 
