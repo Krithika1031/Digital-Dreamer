@@ -230,7 +230,7 @@ cell.classList.remove("active");
 enableCellClicks();
 startTimer();
 
-},3000);
+},300);
 
 }
 function enableCellClicks() {
