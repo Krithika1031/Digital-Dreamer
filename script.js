@@ -643,10 +643,6 @@ _____________________
 
 </div>
 
-<p>
-(You'll fill this later.)
-</p>
-
 <hr>
 
 <h3>⚠ IMPORTANT</h3>
