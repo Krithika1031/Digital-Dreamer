@@ -194,10 +194,7 @@ startMemoryRound();
 
 }
 function startMemoryRound(){
-    clearInterval(timerInterval);
-
-const cells = document.querySelectorAll(".cell");
-cells.forEach(cell => cell.onclick = null);
+    
     updateLives();
     document.getElementById("roundText").innerText =
     `Round ${currentRound} / 5`;
