@@ -257,3 +257,113 @@ function startTimer() {
     }, 1000);
 
 }
+// ============================
+// CHECK ANSWER
+// ============================
+
+function checkAnswer(selected, btn) {
+
+    clearInterval(countdown);
+
+    const correct = questions[currentQuestion].answer;
+
+    const allOptions = document.querySelectorAll(".option");
+
+    allOptions.forEach(option => {
+
+        option.style.pointerEvents = "none";
+
+        if(option.innerText === correct){
+
+            option.classList.add("correct");
+
+        }
+
+    });
+
+    if(selected === correct){
+
+        btn.classList.add("correct");
+
+        setTimeout(nextQuestion,800);
+
+    }
+
+    else{
+
+        btn.classList.add("wrong");
+
+        setTimeout(loseLife,800);
+
+    }
+
+}
+
+
+// ============================
+// LOSE LIFE
+// ============================
+
+function loseLife(){
+
+    lives--;
+
+    updateLives();
+
+    if(lives<=0){
+
+        showResult(false);
+
+        return;
+
+    }
+
+    nextQuestion();
+
+}
+
+
+// ============================
+// UPDATE LIVES
+// ============================
+
+function updateLives(){
+
+    let hearts="";
+
+    for(let i=0;i<lives;i++){
+
+        hearts+="❤️";
+
+    }
+
+    for(let i=lives;i<3;i++){
+
+        hearts+="🖤";
+
+    }
+
+    livesEl.innerHTML=hearts;
+
+}
+
+
+// ============================
+// NEXT QUESTION
+// ============================
+
+function nextQuestion(){
+
+    currentQuestion++;
+
+    if(currentQuestion>=questions.length){
+
+        showResult(true);
+
+        return;
+
+    }
+
+    loadQuestion();
+
+}
