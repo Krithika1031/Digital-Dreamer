@@ -30,9 +30,10 @@ body{
 
     justify-content:center;
 
-    align-items:center;
+    align-items:flex-start;
 
-    overflow:hidden;
+    overflow-y:auto;
+overflow-x:hidden;
 
     color:white;
 
@@ -41,8 +42,10 @@ body{
     #090b1d,
     #111433,
     #0c1028);
+    padding:30px 0;
 
 }
+
 
 /* Aurora */
 
@@ -572,5 +575,12 @@ transform:translate(0,0);
     flex-direction:column;
     justify-content:center;
     gap:18px;
+
+}
+.card{
+
+max-height:95vh;
+
+overflow-y:auto;
 
 }

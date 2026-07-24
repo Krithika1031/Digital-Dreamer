@@ -169,9 +169,9 @@ startBtn.addEventListener("click", () => {
 
 readyBtn.addEventListener("click", () => {
 
-    taskPopup.classList.add("hidden");
+    taskPopup.style.display = "none";
 
-    quizScreen.classList.remove("hidden");
+    quizScreen.style.display = "block";
 
     loadQuestion();
 
