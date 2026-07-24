@@ -1,57 +1,50 @@
-// ---------------------------
-// SCREENS
-// ---------------------------
+// ============================
+// ELEMENTS
+// ============================
 
-const homeScreen = document.getElementById("homeScreen");
-const taskPopup = document.getElementById("taskPopup");
+const landingPage = document.getElementById("landingPage");
+const popupScreen = document.getElementById("popupScreen");
 const quizScreen = document.getElementById("quizScreen");
 const resultScreen = document.getElementById("resultScreen");
 
-// ---------------------------
-// BUTTONS
-// ---------------------------
-
 const startBtn = document.getElementById("startBtn");
 const readyBtn = document.getElementById("readyBtn");
-const retryBtn = document.getElementById("retryBtn");
+const resultBtn = document.getElementById("resultBtn");
 
-// ---------------------------
-// QUIZ ELEMENTS
-// ---------------------------
-
-const timerEl = document.getElementById("timer");
 const livesEl = document.getElementById("lives");
-const questionNo = document.getElementById("questionNumber");
+const timerEl = document.getElementById("timer");
+const questionNo = document.getElementById("questionNo");
 const questionTitle = document.getElementById("questionTitle");
 const stepsDiv = document.getElementById("steps");
 const optionsDiv = document.getElementById("options");
 const progressFill = document.getElementById("progressFill");
 
-// ---------------------------
-// RESULT
-// ---------------------------
+const resultHeading = document.getElementById("resultHeading");
+const resultMessage = document.getElementById("resultMessage");
 
-const resultTitle = document.getElementById("resultTitle");
-const resultText = document.getElementById("resultText");
-
-// ---------------------------
+// ============================
 // GAME VARIABLES
-// ---------------------------
+// ============================
 
 let currentQuestion = 0;
 let lives = 3;
-let timer = 5;
+let timer = 4;
 let countdown;
+
+// ============================
+// QUESTIONS
+// ============================
+
 const questions = [
 
 {
-title:"Arrange to make a website load.",
+title:"Arrange the steps to make a Website Load",
 
 steps:[
-"A. Browser displays webpage",
-"B. User enters URL",
-"C. Server sends response",
-"D. Browser sends request"
+"Browser Displays Webpage",
+"User Enters URL",
+"Server Sends Response",
+"Browser Sends Request"
 ],
 
 options:[
@@ -61,149 +54,112 @@ options:[
 "BADC"
 ],
 
-answer:0
+answer:"BDCA"
 
 },
 
 {
-title:"Arrange the steps to send an email.",
+title:"Arrange the steps to Send an Email",
 
 steps:[
-"A. Email reaches recipient",
-"B. Click Send",
-"C. Compose the email",
-"D. Open Gmail"
+"Compose Email",
+"Click Send",
+"Email Travels Through Internet",
+"Receiver Gets Email"
 ],
 
 options:[
-"DBCA",
-"DCBA",
-"CDBA",
-"DABC"
+"ABCD",
+"ACBD",
+"BACD",
+"ABDC"
 ],
 
-answer:1
+answer:"ABCD"
 
 },
 
 {
-title:"Arrange the steps to download a file.",
+title:"Arrange the steps to Download a File",
 
 steps:[
-"A. File downloads",
-"B. Open the website",
-"C. Click Download",
-"D. Select the file"
+"Click Download",
+"Browser Sends Request",
+"Server Sends File",
+"File Saves to Device"
 ],
 
 options:[
-"BCDA",
-"BDCA",
-"BCAD",
-"DBCA"
+"ABCD",
+"BACD",
+"ACBD",
+"ABDC"
 ],
 
-answer:1
+answer:"ABCD"
 
 },
 
 {
-title:"Arrange the steps to connect to Wi-Fi.",
+title:"Arrange the steps to Connect to Wi-Fi",
 
 steps:[
-"A. Tap Connect",
-"B. Enter the password",
-"C. Open Wi-Fi Settings",
-"D. Select the Wi-Fi network"
+"Choose Wi-Fi",
+"Enter Password",
+"Click Connect",
+"Internet Starts Working"
 ],
 
 options:[
-"CBDA",
-"DCBA",
-"CDBA",
-"CDAB"
+"ABCD",
+"ABDC",
+"BACD",
+"ACBD"
 ],
 
-answer:2
+answer:"ABCD"
 
 },
 
 {
-title:"Arrange the steps to make Maggi.",
+title:"Arrange the steps to Make Maggi",
 
 steps:[
-"A. Cook and Serve",
-"B. Add the noodles",
-"C. Boil Water",
-"D. Add the Tastemaker"
+"Boil Water",
+"Add Maggi & Tastemaker",
+"Cook for 2 Minutes",
+"Serve"
 ],
 
 options:[
-"CDBA",
-"CBDA",
-"BCDA",
-"CBAD"
+"ABCD",
+"BACD",
+"ACBD",
+"ABDC"
 ],
 
-answer:1
+answer:"ABCD"
 
 }
 
 ];
 
-// ---------------------------
-// START BUTTON
-// ---------------------------
+// ============================
+// BUTTON EVENTS
+// ============================
 
-startBtn.addEventListener("click", () => {
+startBtn.onclick = () => {
 
-    homeScreen.style.display = "none";
+landingPage.classList.add("hidden");
+popupScreen.classList.remove("hidden");
 
-    taskPopup.classList.remove("hidden");
+};
 
-});
+readyBtn.onclick = () => {
 
-// ---------------------------
-// READY BUTTON
-// ---------------------------
+popupScreen.classList.add("hidden");
+quizScreen.classList.remove("hidden");
 
-readyBtn.addEventListener("click", () => {
+loadQuestion();
 
-    taskPopup.style.display = "none";
-
-    quizScreen.style.display = "block";
-
-    loadQuestion();
-
-});
-function loadQuestion(){
-
-const q = questions[currentQuestion];
-
-questionNo.innerText = currentQuestion + 1;
-
-questionTitle.innerText = q.title;
-
-progressFill.style.width=((currentQuestion+1)/questions.length)*100+"%";
-
-stepsDiv.innerHTML="";
-
-optionsDiv.innerHTML="";
-
-q.steps.forEach(step=>{
-
-stepsDiv.innerHTML+=`
-<div class="step">${step}</div>
-`;
-
-});
-
-q.options.forEach((option,index)=>{
-
-optionsDiv.innerHTML+=`
-<div class="option">${index+1}. ${option}</div>
-`;
-
-});
-
-}
+};

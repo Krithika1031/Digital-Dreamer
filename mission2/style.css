@@ -584,3 +584,530 @@ max-height:95vh;
 overflow-y:auto;
 
 }
+/* ======================================================
+   PART 2A
+   GAME LAYOUT
+====================================================== */
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    align-items:flex-start;
+
+    padding:30px 0;
+
+}
+
+/* Card */
+
+.card{
+
+    width:100%;
+    max-width:460px;
+
+    min-height:720px;
+
+    padding:30px;
+
+    overflow-y:auto;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.card{
+
+    max-width:none;
+
+    min-height:100dvh;
+
+    border-radius:0;
+
+    padding:28px 22px;
+
+}
+
+}
+
+/* Hide */
+
+.hidden{
+
+    display:none !important;
+
+}
+
+/* Sections */
+
+#landingPage,
+#popupScreen,
+#quizScreen,
+#resultScreen{
+
+    animation:fadeUp .45s ease;
+
+}
+
+/* Popup */
+
+#popupScreen{
+
+    text-align:center;
+
+}
+
+#popupScreen p{
+
+    line-height:1.8;
+
+    color:#efefef;
+
+}
+
+/* Quiz */
+
+#quizScreen{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+/* Top */
+
+.topBar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+#lives{
+
+    font-size:1.45rem;
+
+}
+
+#timer{
+
+    font-size:1.35rem;
+
+    font-weight:700;
+
+    color:var(--cyan);
+
+}
+
+/* Progress */
+
+.progressText{
+
+    font-weight:600;
+
+    margin-bottom:10px;
+
+}
+
+.progress{
+
+    width:100%;
+
+    height:10px;
+
+    background:rgba(255,255,255,.15);
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    margin-bottom:25px;
+
+}
+
+#progressFill{
+
+    width:20%;
+
+    height:100%;
+
+    background:linear-gradient(
+    90deg,
+    var(--purple),
+    var(--pink));
+
+    transition:.35s;
+
+}
+
+/* Question */
+
+#questionTitle{
+
+    font-size:1.3rem;
+
+    margin-bottom:18px;
+
+}
+
+/* Steps */
+
+#steps{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    margin-bottom:28px;
+
+}
+
+.step{
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:14px;
+
+    padding:14px;
+
+    text-align:left;
+
+    line-height:1.6;
+
+}
+/* ======================================================
+   PART 2B
+   BUTTONS • OPTIONS • RESULT • ANIMATIONS
+====================================================== */
+
+/* Buttons */
+
+button{
+
+    width:100%;
+
+    margin-top:25px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        #8b5cf6,
+        #ec4899
+    );
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 0 18px rgba(236,72,153,.45);
+
+}
+
+button:active{
+
+    transform:scale(.98);
+
+}
+
+/* Options */
+
+#options{
+
+    display:grid;
+
+    gap:14px;
+
+    margin-top:10px;
+
+}
+
+.option{
+
+    padding:15px;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    text-align:center;
+
+    font-weight:600;
+
+}
+
+.option:hover{
+
+    transform:translateY(-2px);
+
+    border-color:#7dd3fc;
+
+    background:rgba(125,211,252,.12);
+
+}
+
+/* Correct */
+
+.correct{
+
+    background:#22c55e !important;
+
+    color:white;
+
+    border:none !important;
+
+}
+
+/* Wrong */
+
+.wrong{
+
+    background:#ef4444 !important;
+
+    color:white;
+
+    border:none !important;
+
+}
+
+/* Timer Warning */
+
+.danger{
+
+    color:#ff4d6d !important;
+
+    animation:pulse .7s infinite;
+
+}
+
+/* Result Screen */
+
+#resultScreen{
+
+    text-align:center;
+
+}
+
+#resultHeading{
+
+    font-size:2rem;
+
+    margin-bottom:18px;
+
+}
+
+#resultMessage{
+
+    line-height:1.8;
+
+    margin-bottom:25px;
+
+    color:#eeeeee;
+
+}
+
+/* Divider */
+
+.divider{
+
+    width:80px;
+
+    height:3px;
+
+    border-radius:20px;
+
+    margin:18px auto 28px;
+
+    background:linear-gradient(
+        90deg,
+        #8b5cf6,
+        #06b6d4
+    );
+
+}
+
+/* Landing */
+
+.mission{
+
+    letter-spacing:4px;
+
+    color:#9ca3af;
+
+    font-size:.9rem;
+
+    margin-bottom:10px;
+
+}
+
+.subtitle{
+
+    color:#cbd5e1;
+
+    margin-top:12px;
+
+}
+
+.content{
+
+    margin-top:25px;
+
+    line-height:1.8;
+
+}
+
+.content h2{
+
+    margin-bottom:15px;
+
+}
+
+.content p{
+
+    margin-bottom:10px;
+
+}
+
+/* Fade Animation */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* Pulse */
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.12);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* Scrollbar */
+
+.card::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.card::-webkit-scrollbar-thumb{
+
+    background:rgba(255,255,255,.25);
+
+    border-radius:20px;
+
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    .topBar{
+
+        font-size:.9rem;
+
+    }
+
+    #questionTitle{
+
+        font-size:1.1rem;
+
+    }
+
+    .step{
+
+        font-size:.92rem;
+
+    }
+
+    .option{
+
+        font-size:.9rem;
+
+        padding:13px;
+
+    }
+
+    button{
+
+        padding:14px;
+
+    }
+
+}

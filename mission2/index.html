@@ -28,166 +28,211 @@
 <body>
 
     <!-- Aurora Background -->
+
     <div class="aurora">
+
         <span></span>
         <span></span>
         <span></span>
+
     </div>
 
-    <!-- Main Card -->
 
     <div class="container">
 
         <div class="card">
 
-    <!-- HOME SCREEN -->
+            <!-- ========================= -->
+            <!-- LANDING PAGE -->
+            <!-- ========================= -->
 
-    <div id="homeScreen">
+            <section id="landingPage">
 
-        <p class="mission">
-            MISSION II
-        </p>
+                <p class="mission">
 
-        <h1>DIGITAL DREAMER</h1>
+                    MISSION II
 
-        <p class="subtitle">
-            Recover the Second Digital Key
-        </p>
+                </p>
 
-        <div class="divider"></div>
+                <h1>
 
-        <div class="content">
+                    DIGITAL DREAMER
 
-            <h2>Welcome Back, Agent.</h2>
+                </h1>
 
-            <p>
-                You have successfully discovered another valid QR Code.
-            </p>
+                <p class="subtitle">
 
-            <p>
-                Complete every challenge correctly to unlock the next destination.
-            </p>
+                    Recover the Second Digital Key
+
+                </p>
+
+                <div class="divider"></div>
+
+                <div class="content">
+
+                    <h2>
+
+                        Welcome Back, Agent.
+
+                    </h2>
+
+                    <p>
+
+                        You have successfully discovered another valid QR Code.
+
+                    </p>
+
+                    <p>
+
+                        Complete every challenge correctly to unlock the next destination.
+
+                    </p>
+
+                </div>
+
+                <button id="startBtn">
+
+                    START MISSION
+
+                </button>
+
+            </section>
+
+
+            <!-- ========================= -->
+            <!-- TASK POPUP -->
+            <!-- ========================= -->
+
+            <section id="popupScreen" class="hidden">
+
+                <h2>
+
+                    🧩 TASK 1
+
+                </h2>
+
+                <div class="divider"></div>
+
+                <p>
+
+                    Arrange each question in the correct order.
+
+                </p>
+
+                <br>
+
+                <p>
+
+                    ⏱️ 4 Seconds per Question
+
+                </p>
+
+                <p>
+
+                    ❤️ 3 Lives
+
+                </p>
+
+                <br>
+
+                <p>
+
+                    Complete all 5 questions to recover the Digital Key.
+
+                </p>
+
+                <button id="readyBtn">
+
+                    I'M READY
+
+                </button>
+
+            </section>
+
+
+
+            <!-- ========================= -->
+            <!-- QUIZ -->
+            <!-- ========================= -->
+
+            <section id="quizScreen" class="hidden">
+
+                <div class="topBar">
+
+                    <div id="lives">
+
+                        ❤️❤️❤️
+
+                    </div>
+
+                    <div id="timer">
+
+                        ⏱️4
+
+                    </div>
+
+                </div>
+
+
+                <div class="progressText">
+
+                    Question
+
+                    <span id="questionNo">
+
+                        1
+
+                    </span>
+
+                    /5
+
+                </div>
+
+                <div class="progress">
+
+                    <div id="progressFill"></div>
+
+                </div>
+
+                <h2 id="questionTitle">
+
+                    Question
+
+                </h2>
+
+                <div id="steps"></div>
+
+                <div id="options"></div>
+
+            </section>
+
+
+
+            <!-- ========================= -->
+            <!-- RESULT -->
+            <!-- ========================= -->
+
+            <section id="resultScreen" class="hidden">
+
+                <h2 id="resultHeading">
+
+                    Mission Complete
+
+                </h2>
+
+                <p id="resultMessage">
+
+                </p>
+
+                <button id="resultBtn">
+
+                    CONTINUE
+
+                </button>
+
+            </section>
 
         </div>
-
-        <button id="startBtn">
-            START MISSION
-        </button>
-
-    </div>
-
-
-
-    <!-- TASK POPUP -->
-
-    <div id="taskPopup" class="hidden">
-
-        <h2>🧩 TASK 1</h2>
-
-        <div class="divider"></div>
-
-        <p class="popupText">
-
-            Arrange each question in the correct order.
-
-        </p>
-
-        <br>
-
-        <p>⏱️ 5 Seconds per Question</p>
-
-        <p>❤️ Lives : 3</p>
-
-        <br>
-
-        <p>
-
-            Complete all 5 questions to recover the Digital Key.
-
-        </p>
-
-        <button id="readyBtn">
-
-            I'M READY
-
-        </button>
-
-    </div>
-
-
-
-    <!-- QUIZ -->
-
-    <div id="quizScreen" class="hidden">
-
-        <div class="topBar">
-
-            <div id="lives">
-
-                ❤️❤️❤️
-
-            </div>
-
-            <div id="timer">
-
-                ⏱️ 5
-
-            </div>
-
-        </div>
-
-        <div class="progress">
-
-            Question <span id="questionNumber">1</span>/5
-
-        </div>
-
-        <div class="progressBar">
-
-            <div id="progressFill"></div>
-
-        </div>
-
-        <h2 id="questionTitle">
-
-            Question
-
-        </h2>
-
-        <div id="steps">
-
-        </div>
-
-        <div id="options">
-
-        </div>
-
-    </div>
-
-
-
-
-    <!-- RESULT -->
-
-    <div id="resultScreen" class="hidden">
-
-        <h2 id="resultTitle">
-
-        </h2>
-
-        <p id="resultText">
-
-        </p>
-
-        <button id="retryBtn">
-
-            TRY AGAIN
-
-        </button>
-
-    </div>
-
-</div>
 
     </div>
 
