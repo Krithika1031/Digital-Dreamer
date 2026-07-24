@@ -163,3 +163,97 @@ quizScreen.classList.remove("hidden");
 loadQuestion();
 
 };
+// ============================
+// LOAD QUESTION
+// ============================
+
+function loadQuestion() {
+
+    clearInterval(countdown);
+
+    timer = 4;
+
+    timerEl.innerHTML = "⏱️ " + timer;
+
+    timerEl.classList.remove("danger");
+
+    const q = questions[currentQuestion];
+
+    questionNo.innerText = currentQuestion + 1;
+
+    questionTitle.innerText = q.title;
+
+    progressFill.style.width =
+        ((currentQuestion + 1) / questions.length) * 100 + "%";
+
+    // Show Steps
+
+    stepsDiv.innerHTML = "";
+
+    q.steps.forEach((step, index) => {
+
+        const div = document.createElement("div");
+
+        div.className = "step";
+
+        div.innerHTML =
+            "<b>" +
+            String.fromCharCode(65 + index) +
+            ".</b> " +
+            step;
+
+        stepsDiv.appendChild(div);
+
+    });
+
+    // Show Options
+
+    optionsDiv.innerHTML = "";
+
+    q.options.forEach(option => {
+
+        const btn = document.createElement("div");
+
+        btn.className = "option";
+
+        btn.innerText = option;
+
+        btn.onclick = () => checkAnswer(option, btn);
+
+        optionsDiv.appendChild(btn);
+
+    });
+
+    startTimer();
+
+}
+
+// ============================
+// TIMER
+// ============================
+
+function startTimer() {
+
+    countdown = setInterval(() => {
+
+        timer--;
+
+        timerEl.innerHTML = "⏱️ " + timer;
+
+        if (timer <= 2) {
+
+            timerEl.classList.add("danger");
+
+        }
+
+        if (timer === 0) {
+
+            clearInterval(countdown);
+
+            loseLife();
+
+        }
+
+    }, 1000);
+
+}
