@@ -126,7 +126,7 @@ body{
 
     width:100%;
 
-    max-width:390px;
+    max-width:420px;
 
     padding:35px 28px;
 
@@ -346,21 +346,6 @@ transform:translate(80px,-70px);
 100%{
 
 transform:translate(0,0);
-
-}
-
-}
-@keyframes float{
-
-0%,100%{
-
-transform:translateY(0);
-
-}
-
-50%{
-
-transform:translateY(-6px);
 
 }
 
