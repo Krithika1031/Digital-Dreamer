@@ -392,7 +392,7 @@ transform:translate(0,0);
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:18px;
+    margin-bottom:8px;
 }
 
 #lives{
@@ -412,10 +412,8 @@ transform:translate(0,0);
 ========================== */
 
 .progress{
-
-    margin:15px 0;
     font-weight:600;
-
+     margin:8px 0;
 }
 
 .progressBar{
@@ -449,7 +447,7 @@ transform:translate(0,0);
 #questionTitle{
 
     font-size:1.3rem;
-    margin-bottom:20px;
+    margin-bottom:10px;
 
 }
 
@@ -566,5 +564,13 @@ transform:translate(0,0);
 #resultScreen p{
 
     line-height:1.8;
+
+}
+#quizScreen{
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:18px;
 
 }
