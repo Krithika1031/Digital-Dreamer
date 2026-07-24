@@ -40,55 +40,154 @@
 
         <div class="card">
 
-            <p class="mission">
+    <!-- HOME SCREEN -->
 
-                MISSION II
+    <div id="homeScreen">
 
+        <p class="mission">
+            MISSION II
+        </p>
+
+        <h1>DIGITAL DREAMER</h1>
+
+        <p class="subtitle">
+            Recover the Second Digital Key
+        </p>
+
+        <div class="divider"></div>
+
+        <div class="content">
+
+            <h2>Welcome Back, Agent.</h2>
+
+            <p>
+                You have successfully discovered another valid QR Code.
             </p>
 
-            <h1>
-
-                DIGITAL DREAMER
-
-            </h1>
-
-            <p class="subtitle">
-
-                Recover the Second Digital Key
-
+            <p>
+                Complete every challenge correctly to unlock the next destination.
             </p>
 
-            <div class="divider"></div>
+        </div>
 
-            <div class="content">
+        <button id="startBtn">
+            START MISSION
+        </button>
 
-                <h2>
+    </div>
 
-                    Welcome Back, Agent.
 
-                </h2>
 
-                <p>
+    <!-- TASK POPUP -->
 
-                    You have successfully discovered another valid QR code.
+    <div id="taskPopup" class="hidden">
 
-                </p>
+        <h2>🧩 TASK 1</h2>
 
-                <p>
+        <div class="divider"></div>
 
-                    Complete every challenge correctly to unlock the next destination.
+        <p class="popupText">
 
-                </p>
+            Arrange each question in the correct order.
+
+        </p>
+
+        <br>
+
+        <p>⏱️ 5 Seconds per Question</p>
+
+        <p>❤️ Lives : 3</p>
+
+        <br>
+
+        <p>
+
+            Complete all 5 questions to recover the Digital Key.
+
+        </p>
+
+        <button id="readyBtn">
+
+            I'M READY
+
+        </button>
+
+    </div>
+
+
+
+    <!-- QUIZ -->
+
+    <div id="quizScreen" class="hidden">
+
+        <div class="topBar">
+
+            <div id="lives">
+
+                ❤️❤️❤️
 
             </div>
 
-            <button id="startBtn">
+            <div id="timer">
 
-                START MISSION
+                ⏱️ 5
 
-            </button>
+            </div>
 
         </div>
+
+        <div class="progress">
+
+            Question <span id="questionNumber">1</span>/5
+
+        </div>
+
+        <div class="progressBar">
+
+            <div id="progressFill"></div>
+
+        </div>
+
+        <h2 id="questionTitle">
+
+            Question
+
+        </h2>
+
+        <div id="steps">
+
+        </div>
+
+        <div id="options">
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- RESULT -->
+
+    <div id="resultScreen" class="hidden">
+
+        <h2 id="resultTitle">
+
+        </h2>
+
+        <p id="resultText">
+
+        </p>
+
+        <button id="retryBtn">
+
+            TRY AGAIN
+
+        </button>
+
+    </div>
+
+</div>
 
     </div>
 

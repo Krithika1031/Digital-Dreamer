@@ -360,3 +360,211 @@ transform:translate(0,0);
 }
 
 }
+/* ==========================
+   GAME SCREENS
+========================== */
+
+.hidden{
+    display:none;
+}
+
+#taskPopup,
+#quizScreen,
+#resultScreen{
+    animation:fadeUp .5s ease;
+}
+
+/* ==========================
+   TASK POPUP
+========================== */
+
+.popupText{
+    font-size:1.1rem;
+    margin-top:15px;
+    line-height:1.8;
+}
+
+/* ==========================
+   TOP BAR
+========================== */
+
+.topBar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+#lives{
+    font-size:1.4rem;
+}
+
+#timer{
+
+    font-size:1.3rem;
+    font-weight:700;
+    color:var(--cyan);
+
+}
+
+/* ==========================
+   PROGRESS
+========================== */
+
+.progress{
+
+    margin:15px 0;
+    font-weight:600;
+
+}
+
+.progressBar{
+
+    width:100%;
+    height:10px;
+    background:rgba(255,255,255,.15);
+    border-radius:30px;
+    overflow:hidden;
+    margin-bottom:25px;
+
+}
+
+#progressFill{
+
+    width:20%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        var(--purple),
+        var(--pink));
+
+    transition:.4s;
+
+}
+
+/* ==========================
+   QUESTION
+========================== */
+
+#questionTitle{
+
+    font-size:1.3rem;
+    margin-bottom:20px;
+
+}
+
+#steps{
+
+    text-align:left;
+    margin-bottom:25px;
+    line-height:2;
+
+}
+
+.step{
+
+    padding:12px;
+    margin-bottom:10px;
+    border-radius:12px;
+    background:rgba(255,255,255,.06);
+
+}
+
+/* ==========================
+   OPTIONS
+========================== */
+
+#options{
+
+    display:grid;
+    gap:15px;
+
+}
+
+.option{
+
+    padding:15px;
+    border-radius:14px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    cursor:pointer;
+    transition:.25s;
+
+}
+
+.option:hover{
+
+    background:rgba(123,97,255,.18);
+    transform:translateY(-2px);
+
+}
+
+/* ==========================
+   CORRECT
+========================== */
+
+.correct{
+
+    background:#1d8f4d !important;
+
+}
+
+/* ==========================
+   WRONG
+========================== */
+
+.wrong{
+
+    background:#d83d3d !important;
+
+}
+
+/* ==========================
+   TIMER WARNING
+========================== */
+
+.danger{
+
+    color:#ff4f4f !important;
+    animation:pulse .8s infinite;
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.2);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================
+   RESULT
+========================== */
+
+#resultScreen h2{
+
+    font-size:2rem;
+    margin-bottom:20px;
+
+}
+
+#resultScreen p{
+
+    line-height:1.8;
+
+}
