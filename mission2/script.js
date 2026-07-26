@@ -1,369 +1,669 @@
-// ============================
-// ELEMENTS
-// ============================
-
-const landingPage = document.getElementById("landingPage");
-const popupScreen = document.getElementById("popupScreen");
-const quizScreen = document.getElementById("quizScreen");
-const resultScreen = document.getElementById("resultScreen");
-
-const startBtn = document.getElementById("startBtn");
-const readyBtn = document.getElementById("readyBtn");
-const resultBtn = document.getElementById("resultBtn");
-
-const livesEl = document.getElementById("lives");
-const timerEl = document.getElementById("timer");
-const questionNo = document.getElementById("questionNo");
-const questionTitle = document.getElementById("questionTitle");
-const stepsDiv = document.getElementById("steps");
-const optionsDiv = document.getElementById("options");
-const progressFill = document.getElementById("progressFill");
-
-const resultHeading = document.getElementById("resultHeading");
-const resultMessage = document.getElementById("resultMessage");
-
-// ============================
-// GAME VARIABLES
-// ============================
-
-let currentQuestion = 0;
+let timerInterval;
+const patternsPerRound = [3, 3, 2, 1, 1];
+const boxesPerRound = [4, 5, 6, 7, 8];
+let currentPattern = 1;
+let correctPattern = [];
+let userPattern = [];
+let currentRound = 1;
 let lives = 3;
-let timer = 4;
-let countdown;
+const popup = document.getElementById("popup");
+const popupTitle = document.getElementById("popupTitle");
+const popupMessage = document.getElementById("popupMessage");
+const popupBtn = document.getElementById("popupBtn");
 
-// ============================
-// QUESTIONS
-// ============================
+function showPopup(title, message, callback = null) {
+    popupTitle.innerHTML = title;
+    popupMessage.innerHTML = message;
 
-const questions = [
+    popup.classList.remove("hidden");
 
-{
-title:"Arrange the steps to make a Website Load",
+    popupBtn.onclick = () => {
+        popup.classList.add("hidden");
 
-steps:[
-"Browser Displays Webpage",
-"User Enters URL",
-"Server Sends Response",
-"Browser Sends Request"
-],
+        if (callback) callback();
+    };
+}
+document.getElementById("startBtn").addEventListener("click", () => {
 
-options:[
-"BDCA",
-"BCDA",
-"DBCA",
-"BADC"
-],
+document.querySelector(".container").innerHTML = `
 
-answer:"BDCA"
+<h1>TASK 1</h1>
+<h3>Binary Decode</h3>
 
-},
+<hr>
+<div class="question">
+<h2>Question 1</h2>
 
-{
-title:"Arrange the steps to Send an Email",
+<pre>
+01000011
+01001100
+01001001
+01000101
+01001110
+01010100
+</pre>
 
-steps:[
-"Compose Email",
-"Click Send",
-"Email Travels Through Internet",
-"Receiver Gets Email"
-],
+<div class="clues">
 
-options:[
-"ABCD",
-"ACBD",
-"BACD",
-"ABDC"
-],
+<b>Clues</b><br>
 
-answer:"ABCD"
+A = 65 = 01000001<br>
+B = 66 = 01000010<br>
+C = 67 = 01000011   and so on...
 
-},
+</div>
+<div class="options">
+<label><input type="radio" name="q1" value="COOKIE"> COOKIE</label>
 
-{
-title:"Arrange the steps to Download a File",
+<label><input type="radio" name="q1" value="CIPHER"> CIPHER</label>
 
-steps:[
-"Click Download",
-"Browser Sends Request",
-"Server Sends File",
-"File Saves to Device"
-],
+<label><input type="radio" name="q1" value="CLIENT"> CLIENT</label>
+<label><input type="radio" name="q1" value="CODING"> CODING</label>
+</div>
+<hr>
+</div>
+<div class="question">
+<h2>Question 2</h2>
 
-options:[
-"ABCD",
-"BACD",
-"ACBD",
-"ABDC"
-],
+<pre>
+01000100
+01000001
+01010100
+01000001
+</pre>
 
-answer:"ABCD"
+<div class="clues">
 
-},
+<b>Clues</b><br>
 
-{
-title:"Arrange the steps to Connect to Wi-Fi",
+A = 65 = 01000001<br>
+B = 66 = 01000010<br>
+C = 67 = 01000011   and so on...
 
-steps:[
-"Choose Wi-Fi",
-"Enter Password",
-"Click Connect",
-"Internet Starts Working"
-],
+</div>
+<div class="options">
+<label><input type="radio" name="q2" value="DATE"> DATE</label>
 
-options:[
-"ABCD",
-"ABDC",
-"BACD",
-"ACBD"
-],
+<label><input type="radio" name="q2" value="DATA"> DATA</label>
 
-answer:"ABCD"
+<label><input type="radio" name="q2" value="DISK"> DISK</label>
 
-},
+<label><input type="radio" name="q2" value="DUMP"> DUMP</label>
+</div>
+</div>
 
-{
-title:"Arrange the steps to Make Maggi",
+<button id="submitTask">Submit Task 1</button>
 
-steps:[
-"Boil Water",
-"Add Maggi & Tastemaker",
-"Cook for 2 Minutes",
-"Serve"
-],
+`;
 
-options:[
-"ABCD",
-"BACD",
-"ACBD",
-"ABDC"
-],
+document.getElementById("submitTask").addEventListener("click", validateTask);
 
-answer:"ABCD"
+});
+
+function validateTask(){
+
+const q1=document.querySelector('input[name="q1"]:checked');
+const q2=document.querySelector('input[name="q2"]:checked');
+
+if(!q1 || !q2){
+
+showPopup(
+    "⚠️ Incomplete",
+    "Please answer both questions."
+);
+
+return;
 
 }
 
+let wrong=[];
+
+if(q1.value!=="CLIENT"){
+wrong.push("Question 1");
+}
+
+if(q2.value!=="DATA"){
+wrong.push("Question 2");
+}
+
+if(wrong.length===0){
+
+showPopup(
+
+"✅ TASK 1 COMPLETED",
+
+"Loading Task 2...",
+
+()=>{
+
+showMission1Task2();
+
+}
+
+);
+
+}else{
+
+showPopup(
+    "❌ ACCESS DENIED",
+    wrong.join(" & ") + " is incorrect.<br><br>Please try again.",
+    () => {
+        location.reload();
+    }
+);
+
+}
+
+}
+function showMission1Task2(){
+
+document.querySelector(".container").innerHTML=`
+
+<div class="memory-container">
+
+<h3>MISSION 1</h3>
+
+<h1>🧠 MEMORY MATRIX</h1>
+
+<p class="memory-subtitle">
+Memorize the highlighted pattern.
+</p>
+<div class="timer" id="timer">
+⏳ 3
+</div>
+<div class="lives" id="lives">
+❤️❤️❤️
+</div>
+
+<div class="round" id="roundText">
+Round 1 / 5
+</div>
+
+<div class="grid">
+
+${Array.from({length:9},(_,i)=>`
+<div class="cell" data-index="${i}"></div>
+`).join("")}
+
+</div>
+
+</div>
+
+`;
+startMemoryRound();
+
+}
+function startMemoryRound(){
+    
+    updateLives();
+    document.getElementById("roundText").innerText =
+    `Round ${currentRound} / 5`;
+
+const cells=document.querySelectorAll(".cell");
+
+// Clear everything
+cells.forEach(cell=>{
+cell.classList.remove("active");
+});
+
+// Randomly choose 3 cells
+correctPattern = [];
+while (correctPattern.length < boxesPerRound[currentRound - 1]) {
+let random=Math.floor(Math.random()*9);
+
+if(!correctPattern.includes(random)){
+correctPattern.push(random);
+}
+
+}
+
+// Highlight them
+correctPattern.forEach(index=>{
+cells[index].classList.add("active");
+});
+
+// Hide after 2 seconds
+setTimeout(()=>{
+
+cells.forEach(cell=>{
+cell.classList.remove("active");
+});
+enableCellClicks();
+startTimer();
+
+},300);
+
+}
+function enableCellClicks() {
+
+    userPattern = [];
+
+    const cells = document.querySelectorAll(".cell");
+
+    cells.forEach(cell => {
+
+        cell.onclick = () => {
+
+            const index = parseInt(cell.dataset.index);
+
+            // Don't allow clicking same cell twice
+            if (userPattern.includes(index)) return;
+
+            // If correct cell
+            if (correctPattern.includes(index)) {
+
+                userPattern.push(index);
+                cell.classList.add("active");
+
+                // Player found all correct cells
+                if (userPattern.length === correctPattern.length) {
+
+                    setTimeout(() => {
+                        checkRound();
+                    }, 500);
+
+                }
+
+            }
+
+            // Wrong cell selected
+            else {
+
+                cell.classList.add("wrong");
+                clearInterval(timerInterval);
+                lives--;
+
+                updateLives();
+
+                // Disable further clicks
+                cells.forEach(c => c.onclick = null);
+
+                setTimeout(() => {
+
+                    if (lives === 0) {
+
+                        showPopup(
+"🚨 SECURITY BREACH",
+"Restarting Mission 2...",
+function(){
+
+    lives = 3;
+    currentRound = 1;
+    currentPattern = 1;
+
+    location.reload();
+
+}
+);
+
+                    } else {
+
+                        startMemoryRound();
+
+                    }
+
+                }, 800);
+
+            }
+
+        };
+
+    });
+
+}
+function updateLives() {
+
+    const hearts = document.getElementById("lives");
+
+    hearts.innerHTML =
+        "❤️".repeat(lives) +
+        "🤍".repeat(3 - lives);
+
+}
+function startTimer(){
+
+    clearInterval(timerInterval);
+
+    let timeLeft = 2;
+
+    const timer = document.getElementById("timer");
+
+    timer.innerHTML = `⏳ ${timeLeft}`;
+
+    timerInterval = setInterval(()=>{
+
+        timeLeft--;
+
+        timer.innerHTML = `⏳ ${timeLeft}`;
+
+        if(timeLeft <= 0){
+
+            clearInterval(timerInterval);
+
+            lives--;
+
+            updateLives();
+
+            const cells = document.querySelectorAll(".cell");
+            cells.forEach(c => c.onclick = null);
+
+            setTimeout(()=>{
+
+                if(lives <= 0){
+
+                    showPopup(
+                        "🚨 SECURITY BREACH",
+                        "Restarting Mission...",
+                        ()=>{
+                            location.reload();
+                        }
+                    );
+
+                }else{
+
+                    startMemoryRound();
+
+                }
+
+            },500);
+
+        }
+
+    },1000);
+
+}
+function checkRound() {
+    clearInterval(timerInterval);
+
+    const cells = document.querySelectorAll(".cell");
+    cells.forEach(cell => cell.onclick = null);
+
+    currentPattern++;
+
+    if (currentPattern > patternsPerRound[currentRound - 1]) {
+
+        currentRound++;
+        currentPattern = 1;
+
+        if (currentRound > 5) {
+
+            showPopup(
+    "🎉 TASK 2 COMPLETED",
+    "Loading Task 3...",
+    () => {
+        showMission1Task3();
+    }
+);
+
+            return;
+        }
+    }
+
+    setTimeout(() => {
+        startMemoryRound();
+    }, 600);
+
+}
+const patternQuestions = [
+    {
+        question: "1\n2\n4\n7\n11\n?",
+        options: ["13", "14", "16", "17"],
+        answer: "16"
+    },
+    {
+        question: "64\n32\n16\n8\n?",
+        options: ["2", "4", "6", "10"],
+        answer: "4"
+    },
+    {
+        question: "Which one doesn't belong?",
+        options: ["CPU", "RAM", "SSD", "Chrome"],
+        answer: "Chrome"
+    },
+    {
+        question: "0001\n0010\n0100\n1000\n?",
+        options: ["0001", "0011", "1111", "1010"],
+        answer: "0001"
+    },
+    {
+        question: "Product\nPrice\nPlace\n?",
+        options: ["Profit", "Promotion", "Planning", "People"],
+        answer: "Promotion"
+    }
 ];
 
-// ============================
-// BUTTON EVENTS
-// ============================
+let currentQuestion = 0;
+let questionTimer;
+let timeLeft = 3;
+let task3lives  = 3;
+function showMission1Task3(){
 
-startBtn.onclick = () => {
+document.querySelector(".container").innerHTML = `
 
-landingPage.classList.add("hidden");
-popupScreen.classList.remove("hidden");
+<div id="task3">
 
-};
+    <div class="taskCard">
 
-readyBtn.onclick = () => {
+        <h2>🧠 TASK 3</h2>
 
-popupScreen.classList.add("hidden");
-quizScreen.classList.remove("hidden");
+        <div class="task-header">
+
+            <div id="questionNo"></div>
+
+            <div id="taskTimer"></div>
+
+            <div id="taskLives">❤️❤️❤️</div>
+
+        </div>
+
+        <div class="questionCard">
+
+            <div id="patternQuestion"></div>
+
+        </div>
+
+        <div id="optionsContainer"></div>
+
+    </div>
+
+</div>
+
+`;
+
+currentQuestion=0;
+lives=3;
 
 loadQuestion();
 
-};
-// ============================
-// LOAD QUESTION
-// ============================
+}
+function loadQuestion(){
 
-function loadQuestion() {
+timeLeft=3;
 
-    clearInterval(countdown);
+const q=patternQuestions[currentQuestion];
 
-    timer = 4;
+document.getElementById("questionNo").innerText=
+`Question ${currentQuestion+1} / 5`;
 
-    timerEl.innerHTML = "⏱️ " + timer;
+document.getElementById("patternQuestion").innerText=q.question;
 
-    timerEl.classList.remove("danger");
+const container=document.getElementById("optionsContainer");
 
-    const q = questions[currentQuestion];
+container.innerHTML="";
 
-    questionNo.innerText = currentQuestion + 1;
+q.options.forEach(option=>{
 
-    questionTitle.innerText = q.title;
+const btn=document.createElement("button");
 
-    progressFill.style.width =
-        ((currentQuestion + 1) / questions.length) * 100 + "%";
+btn.className="optionBtn";
 
-    // Show Steps
+btn.innerText=option;
 
-    stepsDiv.innerHTML = "";
+btn.onclick=()=>checkAnswer(option);
 
-    q.steps.forEach((step, index) => {
+container.appendChild(btn);
 
-        const div = document.createElement("div");
+});
 
-        div.className = "step";
+startQuestionTimer();
 
-        div.innerHTML =
-            "<b>" +
-            String.fromCharCode(65 + index) +
-            ".</b> " +
-            step;
+}
+function startQuestionTimer(){
 
-        stepsDiv.appendChild(div);
+clearInterval(questionTimer);
 
-    });
+document.getElementById("taskTimer").innerText=
+"⏱ "+timeLeft;
 
-    // Show Options
+questionTimer=setInterval(()=>{
 
-    optionsDiv.innerHTML = "";
+timeLeft--;
 
-    q.options.forEach(option => {
+document.getElementById("taskTimer").innerText=
+"⏱ "+timeLeft;
 
-        const btn = document.createElement("div");
+if(timeLeft<=0){
 
-        btn.className = "option";
+clearInterval(questionTimer);
 
-        btn.innerText = option;
+loseLife();
 
-        btn.onclick = () => checkAnswer(option, btn);
-
-        optionsDiv.appendChild(btn);
-
-    });
-
-    startTimer();
+nextQuestion();
 
 }
 
-// ============================
-// TIMER
-// ============================
-
-function startTimer() {
-
-    countdown = setInterval(() => {
-
-        timer--;
-
-        timerEl.innerHTML = "⏱️ " + timer;
-
-        if (timer <= 2) {
-
-            timerEl.classList.add("danger");
-
-        }
-
-        if (timer === 0) {
-
-            clearInterval(countdown);
-
-            loseLife();
-
-        }
-
-    }, 1000);
+},1000);
 
 }
-// ============================
-// CHECK ANSWER
-// ============================
+function checkAnswer(selected){
 
-function checkAnswer(selected, btn) {
+clearInterval(questionTimer);
 
-    clearInterval(countdown);
+if(selected!==patternQuestions[currentQuestion].answer){
 
-    const correct = questions[currentQuestion].answer;
-
-    const allOptions = document.querySelectorAll(".option");
-
-    allOptions.forEach(option => {
-
-        option.style.pointerEvents = "none";
-
-        if(option.innerText === correct){
-
-            option.classList.add("correct");
-
-        }
-
-    });
-
-    if(selected === correct){
-
-        btn.classList.add("correct");
-
-        setTimeout(nextQuestion,800);
-
-    }
-
-    else{
-
-        btn.classList.add("wrong");
-
-        setTimeout(loseLife,800);
-
-    }
+loseLife();
 
 }
 
+nextQuestion();
 
-// ============================
-// LOSE LIFE
-// ============================
-
+}
 function loseLife(){
 
-    lives--;
+lives--;
 
-    updateLives();
+let hearts="";
 
-    if(lives<=0){
+for(let i=0;i<lives;i++)
+hearts+="❤️";
 
-        showResult(false);
+for(let i=lives;i<3;i++)
+hearts+="🤍";
 
-        return;
+document.getElementById("taskLives").innerText=hearts;
 
-    }
+if(lives<=0){
 
-    nextQuestion();
-
-}
-
-
-// ============================
-// UPDATE LIVES
-// ============================
-
-function updateLives(){
-
-    let hearts="";
-
-    for(let i=0;i<lives;i++){
-
-        hearts+="❤️";
-
-    }
-
-    for(let i=lives;i<3;i++){
-
-        hearts+="🖤";
-
-    }
-
-    livesEl.innerHTML=hearts;
+showPopup(
+"❌ MISSION FAILED",
+"Restarting Task 3...",
+()=>{
+restartTask3();
+});
 
 }
 
-
-// ============================
-// NEXT QUESTION
-// ============================
-
+}
 function nextQuestion(){
 
-    currentQuestion++;
+currentQuestion++;
 
-    if(currentQuestion>=questions.length){
+if(currentQuestion>=5){
 
-        showResult(true);
+missionComplete();
 
-        return;
+return;
 
-    }
+}
 
-    loadQuestion();
+loadQuestion();
+
+}
+function restartTask3(){
+
+currentQuestion=0;
+
+lives=3;
+
+document.getElementById("taskLives").innerText="❤️❤️❤️";
+
+loadQuestion();
+
+}
+function missionComplete(){
+
+document.querySelector(".container").innerHTML=`
+
+<div class="missionComplete">
+
+<h1>🎉 MISSION COMPLETE</h1>
+<p>
+You successfully decoded the patterns
+and completed Mission 2.
+</p>
+
+<p>
+The system has unlocked your next clue.
+</p>
+
+<button class="nextArrow"
+onclick="showCluePage()">
+
+➜
+
+</button>
+
+</div>
+
+`;
+
+}
+function showCluePage(){
+
+document.querySelector(".container").innerHTML=`
+
+<div class="cluePage">
+
+<h1>🔓 NEXT CLUE UNLOCKED</h1>
+
+<hr>
+
+<h2>📍 Your next destination is</h2>
+
+<div class="clueBox">
+
+"Glass/Reflection"
+
+</div>
+
+<hr>
+
+<h3>⚠ IMPORTANT</h3>
+
+<p>
+
+Show this screen to one of the volunteers before moving to your next destination.
+
+</p>
+
+<p>
+
+Good luck, Agent!
+
+</p>
+
+</div>
+
+`;
 
 }

@@ -1,243 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Dreamer | Mission 2</title>
 
-    <link rel="preconnect"
-        href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet"
-        href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Aurora Background -->
+<div class="container">
 
-    <div class="aurora">
+    <div class="card">
 
-        <span></span>
-        <span></span>
-        <span></span>
+        <h3 class="mission">MISSION 2</h3>
 
-    </div>
+        <h1>DIGITAL DREAMER</h1>
 
+        <p class="subtitle">
+            Recover the Second Digital Key
+        </p>
 
-    <div class="container">
+        <hr>
 
-        <div class="card">
+        <div id="missionBox">
 
-            <!-- ========================= -->
-            <!-- LANDING PAGE -->
-            <!-- ========================= -->
+            <h2>Welcome Agent.</h2>
 
-            <section id="landingPage">
+            <p>
+                You have successfully discovered a valid QR code.
+            </p>
 
-                <p class="mission">
+            <p>
+                Complete every challenge correctly to unlock the next destination.
+            </p>
 
-                    MISSION II
-
-                </p>
-
-                <h1>
-
-                    DIGITAL DREAMER
-
-                </h1>
-
-                <p class="subtitle">
-
-                    Recover the Second Digital Key
-
-                </p>
-
-                <div class="divider"></div>
-
-                <div class="content">
-
-                    <h2>
-
-                        Welcome Back, Agent.
-
-                    </h2>
-
-                    <p>
-
-                        You have successfully discovered another valid QR Code.
-
-                    </p>
-
-                    <p>
-
-                        Complete every challenge correctly to unlock the next destination.
-
-                    </p>
-
-                </div>
-
-                <button id="startBtn">
-
-                    START MISSION
-
-                </button>
-
-            </section>
-
-
-            <!-- ========================= -->
-            <!-- TASK POPUP -->
-            <!-- ========================= -->
-
-            <section id="popupScreen" class="hidden">
-
-                <h2>
-
-                    🧩 TASK 1
-
-                </h2>
-
-                <div class="divider"></div>
-
-                <p>
-
-                    Arrange each question in the correct order.
-
-                </p>
-
-                <br>
-
-                <p>
-
-                    ⏱️ 4 Seconds per Question
-
-                </p>
-
-                <p>
-
-                    ❤️ 3 Lives
-
-                </p>
-
-                <br>
-
-                <p>
-
-                    Complete all 5 questions to recover the Digital Key.
-
-                </p>
-
-                <button id="readyBtn">
-
-                    I'M READY
-
-                </button>
-
-            </section>
-
-
-
-            <!-- ========================= -->
-            <!-- QUIZ -->
-            <!-- ========================= -->
-
-            <section id="quizScreen" class="hidden">
-
-                <div class="topBar">
-
-                    <div id="lives">
-
-                        ❤️❤️❤️
-
-                    </div>
-
-                    <div id="timer">
-
-                        ⏱️4
-
-                    </div>
-
-                </div>
-
-
-                <div class="progressText">
-
-                    Question
-
-                    <span id="questionNo">
-
-                        1
-
-                    </span>
-
-                    /5
-
-                </div>
-
-                <div class="progress">
-
-                    <div id="progressFill"></div>
-
-                </div>
-
-                <h2 id="questionTitle">
-
-                    Question
-
-                </h2>
-
-                <div id="steps"></div>
-
-                <div id="options"></div>
-
-            </section>
-
-
-
-            <!-- ========================= -->
-            <!-- RESULT -->
-            <!-- ========================= -->
-
-            <section id="resultScreen" class="hidden">
-
-                <h2 id="resultHeading">
-
-                    Mission Complete
-
-                </h2>
-
-                <p id="resultMessage">
-
-                </p>
-
-                <button id="resultBtn">
-
-                    CONTINUE
-
-                </button>
-
-            </section>
+            <button id="startBtn">
+                START MISSION
+            </button>
 
         </div>
 
     </div>
 
-    <script src="script.js"></script>
+</div>
 
+<div id="popup" class="popup hidden">
+    <div class="popup-box">
+        <h2 id="popupTitle"></h2>
+        <p id="popupMessage"></p>
+        <button id="popupBtn">OK</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
-
 </html>
