@@ -1,0 +1,399 @@
+/* ==========================
+   GOOGLE FONTS
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:#050816;
+    color:white;
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+
+}
+
+/* ==========================
+   HIDE SECTIONS
+========================== */
+
+.hidden{
+
+    display:none;
+
+}
+
+/* ==========================
+   COMMON CONTAINER
+========================== */
+
+.container{
+
+    width:90%;
+    max-width:850px;
+
+    margin:auto;
+
+    padding:60px 20px;
+
+    text-align:center;
+
+}
+
+/* ==========================
+   HEADINGS
+========================== */
+
+h1{
+
+    font-family:'Orbitron',sans-serif;
+
+    color:#00ffd1;
+
+    letter-spacing:3px;
+
+    margin-bottom:15px;
+
+}
+
+h2{
+
+    margin-bottom:30px;
+
+    color:white;
+
+}
+
+p{
+
+    color:#cfd8dc;
+
+    line-height:1.8;
+
+}
+
+/* ==========================
+   LOADING SCREEN
+========================== */
+
+#loading-screen{
+
+    height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.loader{
+
+    width:80px;
+
+    height:80px;
+
+    border:8px solid #1d2636;
+
+    border-top:8px solid #00ffd1;
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+
+    margin:30px 0;
+
+}
+
+@keyframes spin{
+
+    100%{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+.loading-text{
+
+    color:#00ffd1;
+
+    font-size:18px;
+
+    margin-bottom:30px;
+
+}
+
+#loading-messages p{
+
+    margin:12px;
+
+    opacity:.8;
+
+}
+
+.success{
+
+    color:#00ff88;
+
+    font-weight:bold;
+
+}
+
+/* ==========================
+   BUTTON
+========================== */
+
+button{
+
+    margin-top:40px;
+
+    padding:16px 40px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:#00ffd1;
+
+    color:#050816;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-size:16px;
+
+}
+
+button:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:0 0 20px #00ffd1;
+
+}
+
+/* ==========================
+   STATUS BAR
+========================== */
+
+.status{
+
+    background:#111827;
+
+    border:2px solid #00ffd1;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    margin:40px 0;
+
+    line-height:2;
+
+    box-shadow:0 0 15px rgba(0,255,209,.15);
+
+}
+
+/* ==========================
+   QUESTION CARDS
+========================== */
+
+.card{
+
+    background:#111827;
+
+    border:2px solid #00ffd1;
+
+    border-radius:18px;
+
+    padding:28px;
+
+    margin:25px 0;
+
+    box-shadow:0 0 20px rgba(0,255,209,.15);
+
+    transition:.35s;
+
+    opacity:0;
+
+    transform:translateY(30px);
+
+}
+
+.card.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+.card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 0 30px rgba(0,255,209,.35);
+
+}
+
+.card h3{
+
+    color:#00ffd1;
+
+    margin-bottom:20px;
+
+}
+
+.card h2{
+
+    color:white;
+
+    margin-top:20px;
+
+}
+
+/* ==========================
+   IMPORTANT BOX
+========================== */
+
+.instructions{
+
+    background:#111827;
+
+    border-left:6px solid #00ffd1;
+
+    margin-top:40px;
+
+    padding:25px;
+
+    text-align:left;
+
+    border-radius:12px;
+
+}
+
+.instructions h3{
+
+    color:#00ffd1;
+
+    margin-bottom:15px;
+
+}
+
+.instructions ul{
+
+    padding-left:20px;
+
+}
+
+.instructions li{
+
+    margin:12px 0;
+
+    color:#d0d8e2;
+
+}
+
+/* ==========================
+   COMPLETE PAGE
+========================== */
+
+#complete-screen{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+/* ==========================
+   FADE ANIMATION
+========================== */
+
+.fade{
+
+    animation:fade .6s ease;
+
+}
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:768px){
+
+.container{
+
+padding:35px 18px;
+
+}
+
+h1{
+
+font-size:28px;
+
+}
+
+h2{
+
+font-size:22px;
+
+}
+
+.card{
+
+padding:22px;
+
+}
+
+button{
+
+width:100%;
+
+padding:16px;
+
+}
+
+.loading-text{
+
+font-size:16px;
+
+}
+
+}
