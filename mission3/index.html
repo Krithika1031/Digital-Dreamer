@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission 03 | Data Recovery</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- ================= LOADING SCREEN ================= -->
+
+<section id="loading-screen">
+
+    <h1>DIGITAL HUNT</h1>
+
+    <div class="loader"></div>
+
+    <p class="loading-text">Decrypting Recovered Files...</p>
+
+    <div id="loading-messages">
+        <p>Initializing Secure Connection...</p>
+        <p>Recovering Encrypted Files...</p>
+        <p>Verifying Agent Clearance...</p>
+        <p class="success">ACCESS GRANTED ✓</p>
+    </div>
+
+</section>
+
+
+<!-- ================= MISSION BRIEF ================= -->
+
+<section id="mission-screen" class="hidden">
+
+    <div class="container">
+
+        <h1>MISSION 03</h1>
+
+        <h2>DATA RECOVERY</h2>
+
+        <p>
+
+            Excellent work, Agent.
+
+            <br><br>
+
+            The previous checkpoint has unlocked
+            five encrypted files.
+
+            <br><br>
+
+            Recover the missing information from
+            each file.
+
+            <br><br>
+
+            Write every answer on the answer sheet
+            provided.
+
+            <br><br>
+
+            Report to the Verification Officer
+            after completing all files.
+
+            <br><br>
+
+            Only verified agents will receive
+            access to the next mission.
+
+        </p>
+
+        <button id="begin-btn">
+
+            BEGIN RECOVERY
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= QUESTIONS ================= -->
+
+<section id="question-screen" class="hidden">
+
+<div class="container">
+
+<h1>MISSION 03</h1>
+
+<h2>RECOVERED FILES</h2>
+
+<div class="status">
+
+🛰 Agent Status : VERIFIED
+
+<br>
+
+📂 Files Available : 5
+
+</div>
+
+
+<div class="card">
+
+<h3>📂 RECOVERED FILE 01</h3>
+
+<p>Complete the sequence.</p>
+
+<h2>2, 4, 8, 16, ____</h2>
+
+</div>
+
+
+<div class="card">
+
+<h3>📂 RECOVERED FILE 02</h3>
+
+<p>
+
+I am a three-digit number.
+
+<br><br>
+
+• Hundreds digit = 2
+
+<br>
+
+• Tens digit = Twice the hundreds digit
+
+<br>
+
+• Ones digit = Half the tens digit
+
+<br><br>
+
+Who am I?
+
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>📂 RECOVERED FILE 03</h3>
+
+<p>Solve using BODMAS.</p>
+
+<h2>5 + 3 × 2 = ?</h2>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>📂 RECOVERED FILE 04</h3>
+
+<p>
+
+A shop buys a notebook for
+
+<b>₹80</b>
+
+and sells it for
+
+<b>₹100</b>
+
+<br><br>
+
+What is the profit?
+
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>📂 RECOVERED FILE 05</h3>
+
+<p>
+
+Monday = 6
+
+<br>
+
+Tuesday = 7
+
+<br>
+
+Wednesday = 9
+
+<br><br>
+
+Friday = ?
+
+</p>
+
+</div>
+
+
+<div class="instructions">
+
+<h3>📢 IMPORTANT</h3>
+
+<ul>
+
+<li>Write all answers on the answer sheet.</li>
+
+<li>Do NOT submit online.</li>
+
+<li>Show your completed sheet to the Verification Officer.</li>
+
+<li>The next QR code will only be revealed after successful verification.</li>
+
+</ul>
+
+</div>
+
+
+<button id="complete-btn">
+
+I HAVE COMPLETED ALL FILES
+
+</button>
+
+</div>
+
+</section>
+
+
+
+
+<!-- ================= FINAL SCREEN ================= -->
+
+<section id="complete-screen" class="hidden">
+
+<div class="container">
+
+<h1>MISSION COMPLETE</h1>
+
+<h2>AWAITING VERIFICATION</h2>
+
+<p>
+
+Excellent work, Agent.
+
+<br><br>
+
+Your recovered files are ready.
+
+<br><br>
+
+Proceed to the Verification Officer
+with your completed answer sheet.
+
+<br><br>
+
+The next checkpoint will only be unlocked
+after successful verification.
+
+</p>
+
+<button onclick="location.reload()">
+
+RETURN
+
+</button>
+
+</div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
