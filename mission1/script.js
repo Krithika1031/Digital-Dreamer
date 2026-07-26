@@ -284,7 +284,7 @@ function enableCellClicks() {
 
                         showPopup(
 "🚨 SECURITY BREACH",
-"Restarting Mission 1...",
+"Restarting Mission 2...",
 function(){
 
     lives = 3;
@@ -607,14 +607,9 @@ document.querySelector(".container").innerHTML=`
 <div class="missionComplete">
 
 <h1>🎉 MISSION COMPLETE</h1>
-
-<p>
-Excellent Work, Agent!
-</p>
-
 <p>
 You successfully decoded the patterns
-and completed Mission 1.
+and completed Mission 2.
 </p>
 
 <p>
@@ -647,7 +642,7 @@ document.querySelector(".container").innerHTML=`
 
 <div class="clueBox">
 
-_____________________
+"Glass/Reflection"
 
 </div>
 
