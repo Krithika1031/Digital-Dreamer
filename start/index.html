@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Hunt</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen">
+
+        <h1>DIGITAL HUNT</h1>
+
+        <div id="terminal">
+            <p id="line1"></p>
+            <p id="line2"></p>
+            <p id="line3"></p>
+            <p id="line4"></p>
+        </div>
+
+        <button id="beginBtn" onclick="showMission()">
+            BEGIN MISSION
+        </button>
+
+    </div>
+
+
+    <!-- Mission Screen -->
+
+    <div id="missionScreen">
+
+        <h2>MISSION 01</h2>
+
+        <div class="missionCard">
+
+            <h3>MISSION BRIEF</h3>
+
+            <p>
+                I am never used unless there's danger.
+            </p>
+
+            <p>
+                If you break my seal, I instantly suffocate my target.
+            </p>
+
+            <p>
+                I fight the enemy no one wants to meet.
+            </p>
+
+            <p>
+                Every system has a backup plan.<br>
+                Every building has one too.
+            </p>
+
+            <p class="highlight">
+                Find the Silent Guardian to unlock your next mission.
+            </p>
+
+        </div>
+
+        <button onclick="acceptMission()">
+            ACCEPT MISSION
+        </button>
+
+    </div>
+
+
+    <!-- Final Screen -->
+
+    <div id="finalScreen">
+
+        <h1>MISSION ACCEPTED</h1>
+
+        <h2>GOOD LUCK AGENT</h2>
+
+        <p>
+            The Hunt Has Begun.
+        </p>
+
+        <p>
+            Close this page and locate the Silent Guardian.
+        </p>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

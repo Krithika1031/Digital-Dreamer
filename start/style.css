@@ -1,0 +1,126 @@
+body{
+
+    margin:0;
+    background:#050505;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+
+}
+
+.container{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+    padding:20px;
+
+}
+
+#loadingScreen,
+#missionScreen,
+#finalScreen{
+
+    width:100%;
+    max-width:500px;
+
+}
+
+h1{
+
+    color:#00e5ff;
+    letter-spacing:2px;
+
+}
+
+h2{
+
+    color:#00e5ff;
+
+}
+
+.missionCard{
+
+    margin-top:25px;
+    background:#111;
+    border:2px solid #00e5ff;
+    border-radius:15px;
+    padding:25px;
+
+    box-shadow:0 0 20px #00e5ff55;
+
+}
+
+.missionCard p{
+
+    line-height:1.8;
+
+}
+
+.highlight{
+
+    color:#00e5ff;
+    font-weight:bold;
+
+}
+
+button{
+
+    margin-top:30px;
+    padding:15px 35px;
+
+    background:#00e5ff;
+    color:black;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+button:hover{
+
+    transform:scale(1.05);
+
+}
+
+#beginBtn{
+
+    display:none;
+
+}
+
+#missionScreen{
+
+    display:none;
+
+}
+
+#finalScreen{
+
+    display:none;
+
+}
+
+#terminal{
+
+    margin-top:30px;
+    text-align:left;
+    max-width:350px;
+    margin-inline:auto;
+
+}
+
+#terminal p{
+
+    height:28px;
+    color:#00ff99;
+
+}
