@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission 09</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Screen 1 -->
+    <div id="screen1" class="screen active">
+
+        <p class="mission">MISSION 09</p>
+
+        <h1>LOCATION RECOVERY</h1>
+
+        <p class="desc">
+            The destination record has been corrupted.
+            <br><br>
+            Recover the place.
+        </p>
+
+        <button onclick="startMission()">BEGIN RECOVERY</button>
+
+    </div>
+
+    <!-- Loading -->
+    <div id="loading" class="screen">
+
+        <div class="loader"></div>
+
+        <h2>Recovering Database...</h2>
+
+    </div>
+
+    <!-- Final Screen -->
+    <div id="screen2" class="screen">
+
+        <p class="mission">LOCATION DATABASE</p>
+
+        <div class="card">
+
+            <h3>Recovered Data</h3>
+
+            <div class="binary">
+                01100111
+            </div>
+
+            <p>
+                Convert the recovered value to continue.(Mayb B->D)
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Recovered Coordinate</h3>
+
+            <p>
+                Figure it out 
+            </p>
+
+            <table class="excel">
+
+                <tr>
+                    <th></th>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                </tr>
+
+                <tr>
+                    <th>1</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <th>2</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <th>3</th>
+                    <td></td>
+                    <td class="selected"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <th>4</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <th>5</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <th>6</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </table>
+
+            <p class="hint">
+                The recovered place and coordinate together
+                reveal the final location.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
